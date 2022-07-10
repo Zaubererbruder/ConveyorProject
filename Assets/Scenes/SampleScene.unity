@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   m_Layer: 2
   m_Name: Main Camera
@@ -471,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424bb85d607e22d4c9c15655e926a784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _builderMode: {fileID: 963194230}
   speed: 100
   zoomSpeed: 20
   left: 97
@@ -496,11 +498,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e718e2db6e1a85945a33052ce9cffc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ghost: {fileID: -4935410745080346948, guid: 894aa43f2f1a39c46899da2cee2d33ee, type: 3}
-  _filterMask:
+  _ghostPrefab: {fileID: -4935410745080346948, guid: 894aa43f2f1a39c46899da2cee2d33ee, type: 3}
+  _gridSystem: {fileID: 1704298814}
+  _cursor: {fileID: 963194231}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31da8921965643e4893a356efef40b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _filterBuilderMask:
     serializedVersion: 2
     m_Bits: 1025
-  _gridSystem: {fileID: 1704298814}
+  _camera: {fileID: 963194227}
+  _rayLength: 1000
 --- !u!1 &1612616511
 GameObject:
   m_ObjectHideFlags: 0
