@@ -4,67 +4,61 @@ using UnityEngine;
 
 public class BuilderMode : MonoBehaviour
 {
-    RaycastHit hit;
-    [SerializeField] private GhostScript _ghost;
-    [SerializeField] private LayerMask _filterMask;
+    [SerializeField] private GhostScript _ghostPrefab;
     [SerializeField] private GridSystem _gridSystem;
+    [SerializeField] private Cursor _cursor;
 
+    private GhostScript _ghost;
     private Transform _ghostTransform;
 
-    void Start()
+    void Awake()
     {
-        var obj = GameObject.Instantiate(_ghost);
-        _ghostTransform = obj.transform;
+        _ghost = GameObject.Instantiate(_ghostPrefab);
+        _ghostTransform = _ghost.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(transform.position, ray.direction, out hit, 1000, _filterMask);
-        if(hit.collider == null)
+        if(!_cursor.HasHit)
         {
             return;
         }
-        var collidedObject = hit.collider.gameObject;
-        var collidedWithGridBlock = collidedObject.TryGetComponent<GridBlock>(out var gridBlock);
+
+        var collidedObject = _cursor.CollidedObject;
+        var collidedWithGridBlock = collidedObject.layer == (int)Layer.Blocks;
         if (collidedWithGridBlock)
         {
-            var hitnew = hit.point - ray.direction*0.001f;
-            var newpos = gridBlock.Grid.GetCellCenterWorld(gridBlock.Grid.WorldToCell(hitnew));
+            var gridBlock = collidedObject.GetComponent<GridBlock>();
+            var newpos = gridBlock.Grid.GetCellCenterWorld(gridBlock.Grid.WorldToCell(_cursor.CorrectHitPoint));
             _ghostTransform.position = new Vector3(newpos.x, newpos.y, newpos.z);
+            _ghost.Grid = gridBlock.Grid;
         }
         else
         {
-            _ghostTransform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-        }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            var obj = Instantiate(_ghost.Prefab, _ghostTransform.position, Quaternion.identity);
-
-            if (!collidedWithGridBlock)
-            {
-                var gridObject = _gridSystem.AddGrid(obj.transform.position);
-                var comp = obj.GetComponent<GridBlock>();
-                comp.Grid = gridObject.GetComponent<Grid>();
-                comp.GridPoint = comp.Grid.WorldToCell(obj.transform.position);
-            }
-            else
-            {
-                var gridblock = hit.collider.gameObject.GetComponent<GridBlock>();
-                var comp = obj.GetComponent<GridBlock>();
-                comp.Grid = gridblock.Grid;
-                comp.GridPoint = comp.Grid.WorldToCell(obj.transform.position);
-            }
-        }
-        
-        if (Input.GetMouseButtonDown(1))
-        {
-            Destroy(collidedObject);
+            _ghostTransform.position = _cursor.Hit.point;
+            _ghost.Grid = null;
         }
     }
 
+    public void ConstructBlock()
+    {
+        if(_ghost.Grid == null)
+        {
+            _ghost.Grid = _gridSystem.AddGrid(_ghostTransform.position).GetComponent<Grid>();
+        }
+        _ghost.ConstructPrefab();
+    }
 
-    
+    public void DestroyBlock()
+    {
+        if(_cursor.HasHit && _cursor.CollidedObject.layer == (int)Layer.Blocks)
+        {
+            Destroy(_cursor.CollidedObject);
+        }
+    }
+
+    public enum Layer
+    {
+        Blocks = 10
+    }
 }

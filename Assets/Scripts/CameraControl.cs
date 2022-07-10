@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraControl : MonoBehaviour
 {
-
+	[SerializeField] private BuilderMode _builderMode;
 	public float speed = 5;
 	public float zoomSpeed = 5;
 
@@ -96,5 +96,15 @@ public class CameraControl : MonoBehaviour
 		transform.Translate(direction * speed * Time.deltaTime);
 		transform.position = new Vector3(transform.position.x, height, transform.position.z);
 		transform.rotation = Quaternion.Euler(rotationX, camRotation, 0);
+
+		if(Input.GetMouseButtonDown(0))
+        {
+			_builderMode.ConstructBlock();
+        }
+		else if(Input.GetMouseButtonDown(1))
+        {
+			_builderMode.DestroyBlock();
+
+		}
 	}
 }
