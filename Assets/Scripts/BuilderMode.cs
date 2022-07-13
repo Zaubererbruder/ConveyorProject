@@ -61,27 +61,12 @@ public class BuilderMode : MonoBehaviour
 
     public void ConstructBlock()
     {
-        var collidedObject = _cursor.CollidedObject;
-        var collidedWithGridBlock = collidedObject.layer == (int)Layer.Blocks;
-        if (collidedWithGridBlock)
-        {
-            var blockInfo = collidedObject.GetComponent<BlockInfo>();
-            var cellGridNear = blockInfo.Grid.WorldToCell(_cursor.CorrectHitPoint);
-            var direction = cellGridNear - blockInfo.GridPoint;
-            var correctCell = cellGridNear + ((_ghost.Prefab.GetComponent<BlockInfo>().Size - Vector3Int.one) * direction / 2);
-            var newpos = blockInfo.Grid.GetCellCenterWorld(correctCell);
-            Debug.Log($"blockInfo: {blockInfo}");
-            Debug.Log($"cellGridNear: {cellGridNear}");
-            Debug.Log($"direction: {direction}");
-            Debug.Log($"correctCell: {correctCell}");
-            Debug.Log($"newpos: {newpos}");
-        }
-
         if (_ghost.Grid == null)
         {
             _ghost.Grid = _gridSystem.AddGrid(_ghostTransform.position).GetComponent<Grid>();
         }
         _ghost.ConstructPrefab();
+        
     }
 
     public void DestroyBlock()

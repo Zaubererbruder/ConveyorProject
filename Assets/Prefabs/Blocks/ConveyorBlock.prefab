@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 246763319212665573}
   - component: {fileID: 1334457225548509745}
   - component: {fileID: 3763001330954744169}
+  - component: {fileID: 6511355283890075171}
   m_Layer: 10
   m_Name: ConveyorBlock
   m_TagString: Untagged
@@ -60,6 +61,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1, z: 1}
+--- !u!54 &6511355283890075171
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115858211744723928}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5986727111907689979
 PrefabInstance:
   m_ObjectHideFlags: 0
