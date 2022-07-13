@@ -479,8 +479,6 @@ MonoBehaviour:
   right: 100
   up: 119
   down: 115
-  rotCamA: 113
-  rotCamB: 101
   startPoint: {fileID: 963194228}
   rotationX: 70
   maxHeight: 100
@@ -501,6 +499,10 @@ MonoBehaviour:
   _ghostPrefab: {fileID: -4935410745080346948, guid: 894aa43f2f1a39c46899da2cee2d33ee, type: 3}
   _gridSystem: {fileID: 1704298814}
   _cursor: {fileID: 963194231}
+  _prefabsForBuild:
+  - {fileID: 4646627136811255562, guid: 50a347e2c93c97d438407c3c7fe8ce79, type: 3}
+  - {fileID: 3115858211744723928, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+  - {fileID: 6054948227424547589, guid: 0eb059cfdab6a86459ea6fa032e69819, type: 3}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,3 +721,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &745343674767912252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246763319212665573, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115858211744723928, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}
+      propertyPath: m_Name
+      value: ConveyorBlock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8f79fd59ecf5bc4b8fbebe28b85f5a3, type: 3}

@@ -17,7 +17,6 @@ public class Conveyor : MonoBehaviour
     void Update()
     {
         
-
     }
 
     private void FixedUpdate()

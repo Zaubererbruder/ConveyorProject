@@ -11,8 +11,6 @@ public class CameraControl : MonoBehaviour
 	public KeyCode right = KeyCode.D;
 	public KeyCode up = KeyCode.W;
 	public KeyCode down = KeyCode.S;
-	public KeyCode rotCamA = KeyCode.Q;
-	public KeyCode rotCamB = KeyCode.E;
 
 	public Transform startPoint;
 	public int rotationX = 70;
@@ -77,9 +75,6 @@ public class CameraControl : MonoBehaviour
 		if (Input.GetKey(left) || L) h = -1; else if (Input.GetKey(right) || R) h = 1; else h = 0;
 		if (Input.GetKey(down) || D) v = -1; else if (Input.GetKey(up) || U) v = 1; else v = 0;
 
-		if (Input.GetKey(rotCamB)) camRotation -= 3; else if (Input.GetKey(rotCamA)) camRotation += 3;
-		camRotation = Mathf.Clamp(camRotation, 0, rotationLimit);
-
 		if (Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
 			if (height < maxHeight) tmpHeight += zoomSpeed;
@@ -104,7 +99,35 @@ public class CameraControl : MonoBehaviour
 		else if(Input.GetMouseButtonDown(1))
         {
 			_builderMode.DestroyBlock();
-
 		}
+
+		if(Input.GetKeyDown(KeyCode.E))
+        {
+			_builderMode.Rotate(0, 90, 0);
+        }
+		if (Input.GetKeyDown(KeyCode.Q))
+		{
+			_builderMode.Rotate(0, -90, 0);
+		}
+		if (Input.GetKeyDown(KeyCode.PageDown))
+		{
+			_builderMode.Rotate(0, 0, 90);
+		}
+		if (Input.GetKeyDown(KeyCode.PageUp))
+		{
+			_builderMode.Rotate(0, 0, -90);
+		}
+		if (Input.GetKeyDown(KeyCode.Home))
+		{
+			_builderMode.Rotate(90, 0, 0);
+		}
+		if (Input.GetKeyDown(KeyCode.End))
+		{
+			_builderMode.Rotate(-90, 0, 0);
+		}
+		if(Input.GetKeyDown(KeyCode.R))
+        {
+			_builderMode.ChangeBuilding();
+        }
 	}
 }

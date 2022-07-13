@@ -20,14 +20,17 @@ public class GhostScript : MonoBehaviour
     {
         _prefab = newPrefab;
         var _mesh = GetComponent<MeshFilter>();
-        var _prefabMesh = _prefab.GetComponent<MeshFilter>();
+        var _prefabMesh = _prefab.GetComponentInChildren<MeshFilter>();
         _mesh.mesh = _prefabMesh.sharedMesh;
+        var newPrefabTransform = newPrefab.transform;
+        _transform.localScale = newPrefabTransform.localScale;
+        _transform.rotation = newPrefabTransform.rotation;
     }
 
     public void ConstructPrefab()
     {
-        var obj = Instantiate(_prefab, _transform.position, Quaternion.identity);
-        var comp = obj.GetComponent<GridBlock>();
+        var obj = Instantiate(_prefab, _transform.position, _transform.rotation);
+        var comp = obj.GetComponent<BlockInfo>();
         comp.Grid = Grid;
         comp.GridPoint = Grid.WorldToCell(obj.transform.position);
     }
